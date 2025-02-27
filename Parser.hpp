@@ -32,7 +32,6 @@ class Parser {
         void expressionParser(string &expression, bool &isRight);
         void sideParsing(const string &equation, bool isRight);
         string trimmer(const string& s);
-        void rightSideParsing(const string &rightSide);
         double returnedExpressionSign(string &expression, bool &isRight);
         pair<int, double> getExpressionValues(vector<string> &elements, double &sign);
 
