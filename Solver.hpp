@@ -1,11 +1,11 @@
-#ifndef EQUATIONSOLVER_HPP
-#define EQUATIONSOLVER_HPP
+#ifndef Solver_HPP
+#define Solver_HPP
 
 #include <unordered_map>
 #include <iostream>
 
 using namespace std;
-class EquationSolver {
+class Solver {
 private:
     int DegreeOfEquation;
     std::unordered_map<int, double> coefficientPowerPair;
@@ -13,13 +13,13 @@ private:
     void printPolynomialDegree();
     void firstDegreeSolver();
     void secondDegreeSolver();
-    void polyEquationSolver();
+    void polySolver();
     double squareRoot(double &val);
     void printReducedForm();
 
 public:
 
-    EquationSolver(const std::unordered_map<int, double>& coefficientPowerPair);
+    Solver(const std::unordered_map<int, double>& coefficientPowerPair);
     void execute();
 
 };;

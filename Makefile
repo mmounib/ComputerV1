@@ -1,4 +1,4 @@
-SRC := main.cpp EquationParser.cpp EquationSolver.cpp
+SRC := main.cpp Parser.cpp Solver.cpp
 NAME := computor
 CXXFLAGS := -Wall -Wextra -Werror
 OBJECT_FILES := $(SRC:.cpp=.o)

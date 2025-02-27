@@ -1,6 +1,6 @@
 
-#ifndef EQUATIONPARSER_H
-#define EQUATIONPARSER_H
+#ifndef Parser_H
+#define Parser_H
 
 #include <string>
 #include <unordered_map>
@@ -17,11 +17,11 @@
 #define FALSE_SIDE false
 
 using namespace std;
-class EquationParser {
+class Parser {
 
     public:
 
-        EquationParser();
+        Parser();
         unordered_map<int, double> execute(const string &equation);
 
     private:

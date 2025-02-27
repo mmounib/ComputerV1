@@ -1,5 +1,5 @@
-#include "EquationParser.hpp" 
-#include "EquationSolver.hpp" 
+#include "Parser.hpp" 
+#include "Solver.hpp" 
 
 int main(int argc, char* argv[]) {
     
@@ -8,12 +8,12 @@ int main(int argc, char* argv[]) {
         if (argc != 2)
             throw (invalid_argument("Invalid argument: There should be two arguments."));
 
-        EquationParser Parser;
+        Parser Parser;
         string equation = argv[1];
         unordered_map<int, double> coefficientPowerPair = Parser.execute(equation);
 
-        EquationSolver equationSolver(coefficientPowerPair);
-        equationSolver.execute();
+        Solver Solver(coefficientPowerPair);
+        Solver.execute();
 
     }
     catch (exception &e) {

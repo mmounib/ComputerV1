@@ -1,9 +1,9 @@
-#include "EquationParser.hpp"
+#include "Parser.hpp"
 
 
-EquationParser::EquationParser() {}
+Parser::Parser() {}
 
-unordered_map<int, double> EquationParser::execute(const string &equation) {
+unordered_map<int, double> Parser::execute(const string &equation) {
 
     string leftSide, rightSide;
 
@@ -17,7 +17,7 @@ unordered_map<int, double> EquationParser::execute(const string &equation) {
 }
 
 
-double EquationParser::returnedExpressionSign(string &expression, bool &isRight) {
+double Parser::returnedExpressionSign(string &expression, bool &isRight) {
 
     expression = trimmer(expression);
     if (expression.empty())
@@ -35,7 +35,7 @@ double EquationParser::returnedExpressionSign(string &expression, bool &isRight)
 
 
 
-pair<int, double> EquationParser::getExpressionValues(vector<string> &elements, double &sign) {
+pair<int, double> Parser::getExpressionValues(vector<string> &elements, double &sign) {
 
     pair<int, double> powerCoefficient(0, stod(this->trimmer(elements[0])) * sign);
 
@@ -49,7 +49,7 @@ pair<int, double> EquationParser::getExpressionValues(vector<string> &elements, 
     return (powerCoefficient);
 }
 
-void EquationParser::expressionParser(string &expression, bool &isRight) {
+void Parser::expressionParser(string &expression, bool &isRight) {
 
     double sign = this->returnedExpressionSign(expression, isRight);
     vector<string> elements = this->splitByDelimiter(expression, MULTIPLY);
@@ -60,7 +60,7 @@ void EquationParser::expressionParser(string &expression, bool &isRight) {
     
 }
 
-void EquationParser::sideParsing(const string &equation, bool isRight) {
+void Parser::sideParsing(const string &equation, bool isRight) {
 
     vector<string> expressions = this->splitByDelimiter(equation, PLUS);
     for (string expression: expressions) {
@@ -77,7 +77,7 @@ void EquationParser::sideParsing(const string &equation, bool isRight) {
 
 }
 
-vector<string> EquationParser::splitByDelimiter(const string& expr, char delim) {
+vector<string> Parser::splitByDelimiter(const string& expr, char delim) {
 
     vector<string> partsArray;
     stringstream strings(expr);
@@ -89,7 +89,7 @@ vector<string> EquationParser::splitByDelimiter(const string& expr, char delim) 
     return partsArray;
 }
 
-string EquationParser::trimmer(const string& s) {
+string Parser::trimmer(const string& s) {
 
     size_t pos = s.find_first_not_of(" \t\n\r\f\v");
     if (pos == string::npos)
@@ -100,7 +100,7 @@ string EquationParser::trimmer(const string& s) {
 
 }
 
-void EquationParser::trimEquation(const string &equation, string &leftSide, string &rightSide) {
+void Parser::trimEquation(const string &equation, string &leftSide, string &rightSide) {
 
     size_t pos = equation.find(EQUAL);
     if (pos == string::npos)

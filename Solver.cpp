@@ -1,8 +1,8 @@
-#include "EquationSolver.hpp"
+#include "Solver.hpp"
 
 
 
-EquationSolver::EquationSolver(const std::unordered_map<int, double>& coefficientPowerPair) : coefficientPowerPair(coefficientPowerPair) {
+Solver::Solver(const std::unordered_map<int, double>& coefficientPowerPair) : coefficientPowerPair(coefficientPowerPair) {
 
     this->DegreeOfEquation = 0;
     for (const auto& [key, value] : coefficientPowerPair) {
@@ -12,15 +12,15 @@ EquationSolver::EquationSolver(const std::unordered_map<int, double>& coefficien
 
 }
 
-void EquationSolver::execute() {
+void Solver::execute() {
     
     this->printReducedForm();
     this->printPolynomialDegree();
-    this->polyEquationSolver();
+    this->polySolver();
 
 }
 
-void EquationSolver::polyEquationSolver() {
+void Solver::polySolver() {
 
     if (this->DegreeOfEquation == 0) {
         if (this->coefficientPowerPair[0] == 0)
@@ -37,11 +37,11 @@ void EquationSolver::polyEquationSolver() {
 
 }
 
-void EquationSolver::printPolynomialDegree() {
+void Solver::printPolynomialDegree() {
     cout << "Polynomial degree: " << this->DegreeOfEquation << endl;
 }
 
-void EquationSolver::printReducedForm() {
+void Solver::printReducedForm() {
 
     std::cout << "Reduced form: ";
     string sign;
@@ -62,7 +62,7 @@ void EquationSolver::printReducedForm() {
 }
 
 
-void EquationSolver::firstDegreeSolver() {
+void Solver::firstDegreeSolver() {
 
     cout << "The solution is:" << endl;
     double equationSolution = (-1 * this->coefficientPowerPair[0]) / this->coefficientPowerPair[1];
@@ -70,7 +70,7 @@ void EquationSolver::firstDegreeSolver() {
 
 }
 
-double  EquationSolver::squareRoot(double &val) {
+double  Solver::squareRoot(double &val) {
     if (val < 0)
         return (-1);
     double beg = 0, end = val, fl = 0.0000001, middle = (beg + end) / 2;
@@ -88,7 +88,7 @@ double  EquationSolver::squareRoot(double &val) {
     return ((beg + end) / 2);
 }
 
-void EquationSolver::secondDegreeSolver() {
+void Solver::secondDegreeSolver() {
 
     double a = this->coefficientPowerPair[DegreeOfEquation];
     double b = this->coefficientPowerPair[DegreeOfEquation - 1];
